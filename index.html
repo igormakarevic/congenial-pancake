@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Магазин</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand" id="brandName">Магазин</div>
+    <nav class="nav">
+      <button id="btnCatalog" class="nav-btn active">Каталог</button>
+      <button id="btnCart" class="nav-btn">Кошик (<span id="cartCount">0</span>)</button>
+      <button id="btnProfile" class="nav-btn">Профіль</button>
+      <button id="btnAdmin" class="nav-btn">Адмін</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- КАТАЛОГ -->
+    <section id="viewCatalog" class="view active">
+      <h1>Каталог</h1>
+      <div id="catalogList" class="grid"></div>
+      <p id="emptyCatalogMsg" class="empty-msg">Товарів поки немає. Додай перший товар у вкладці «Адмін».</p>
+    </section>
+
+    <!-- КОШИК -->
+    <section id="viewCart" class="view">
+      <h1>Кошик</h1>
+      <div id="cartList"></div>
+      <div class="cart-summary">
+        <div>Разом: <strong id="cartTotal">0</strong></div>
+        <button id="btnClearCart" class="btn secondary">Очистити кошик</button>
+      </div>
+    </section>
+
+    <!-- ПРОФІЛЬ (ПОШТА + ПАРОЛЬ) -->
+    <section id="viewProfile" class="view">
+      <h1>Профіль</h1>
+
+      <div id="authBox" class="panel">
+        <div class="tabs">
+          <button id="tabLogin" class="tab-btn active">Вхід</button>
+          <button id="tabRegister" class="tab-btn">Реєстрація</button>
+        </div>
+
+        <form id="loginForm" class="form">
+          <label>
+            Електронна пошта
+            <input type="email" id="loginEmail" required>
+          </label>
+          <label>
+            Пароль
+            <input type="password" id="loginPassword" required>
+          </label>
+          <button type="submit" class="btn">Увійти</button>
+        </form>
+
+        <form id="registerForm" class="form hidden">
+          <label>
+            Електронна пошта
+            <input type="email" id="regEmail" required>
+          </label>
+          <label>
+            Придумай пароль
+            <input type="password" id="regPassword" minlength="4" required>
+          </label>
+          <button type="submit" class="btn">Створити профіль</button>
+        </form>
+
+        <p id="authMsg" class="msg"></p>
+      </div>
+
+      <div id="userBox" class="panel hidden">
+        <p>Прив'язана пошта: <strong id="userEmailDisplay"></strong></p>
+        <button id="btnLogout" class="btn secondary">Вийти з акаунта</button>
+      </div>
+    </section>
+
+    <!-- АДМІН-ПАНЕЛЬ (ДОДАВАННЯ ТОВАРІВ ТА ЦІН) -->
+    <section id="viewAdmin" class="view">
+      <h1>Адмін-панель</h1>
+
+      <div id="adminLock" class="panel">
+        <p>Введи пароль адміністратора для доступу до додавання товарів:</p>
+        <form id="adminAuthForm" class="form">
+          <label>
+            Пароль адміністратора
+            <input type="password" id="adminPassInput" required>
+          </label>
+          <button type="submit" class="btn">Відкрити доступ</button>
+        </form>
+        <p id="adminMsg" class="msg"></p>
+      </div>
+
+      <div id="adminPanel" class="panel hidden">
+        <h2>Додати товар</h2>
+        <form id="addProductForm" class="form">
+          <label>
+            Назва товару
+            <input type="text" id="prodName" required>
+          </label>
+          <label>
+            Ціна
+            <input type="text" id="prodPrice" required>
+          </label>
+          <label>
+            Опис товару
+            <textarea id="prodDesc" rows="3"></textarea>
+          </label>
+          <button type="submit" class="btn">Додати в каталог</button>
+        </form>
+        <p id="adminStatus" class="msg"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
